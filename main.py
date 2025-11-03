@@ -26,7 +26,7 @@ def encrypt_gui():
         with open("encrypted_" + filename.split("/")[-1], 'wb') as file:
             file.write(encrypted_data)
 
-        messagebox.showinfo("Success", "✅ File Encrypted Successfully!")
+        messagebox.showinfo("Success", "File Encrypted Successfully!")
 
     except Exception as e:
         messagebox.showerror("Error", f"Error: {e}")
@@ -45,7 +45,7 @@ def decrypt_gui():
         with open("decrypted_" + filename.split("/")[-1], 'wb') as file:
             file.write(decrypted_data)
 
-        messagebox.showinfo("Success", "✅ File Decrypted Successfully!")
+        messagebox.showinfo("Success", "File Decrypted Successfully!")
 
     except Exception as e:
         messagebox.showerror("Error", f"Error: {e}")
@@ -66,4 +66,5 @@ tk.Button(window, text="Encrypt", command=encrypt_gui, bg="lightgreen").pack(pad
 tk.Button(window, text="Decrypt", command=decrypt_gui, bg="lightblue").pack()
 
 window.mainloop()
+
 
