@@ -1,12 +1,11 @@
 from cryptography.fernet import Fernet
 import hashlib, base64
 
-# Convert password to a valid key
 def get_key(password):
     key = hashlib.sha256(password.encode()).digest()
     return base64.urlsafe_b64encode(key)
 
-# Encrypt file
+
 def encrypt_file(filename, password):
     key = get_key(password)
     fernet = Fernet(key)
@@ -21,7 +20,6 @@ def encrypt_file(filename, password):
 
     print("✅ File Encrypted: encrypted_" + filename)
 
-# Decrypt file
 def decrypt_file(filename, password):
     key = get_key(password)
     fernet = Fernet(key)
@@ -34,9 +32,9 @@ def decrypt_file(filename, password):
     with open("decrypted_" + filename, 'wb') as file:
         file.write(decrypted_data)
 
-    print("✅ File Decrypted: decrypted_" + filename)
+    print("File Decrypted: decrypted_" + filename)
 
-# Main Program
+
 choice = input("Encrypt or Decrypt (e/d): ")
 
 if choice == "e":
@@ -50,4 +48,4 @@ elif choice == "d":
     decrypt_file(filename, password)
 
 else:
-    print("❌ Invalid choice!")
+    print("Invalid choice!")
