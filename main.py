@@ -3,18 +3,15 @@ from tkinter import filedialog, messagebox
 from cryptography.fernet import Fernet
 import hashlib, base64
 
-# Convert password to key
 def get_key(password):
     key = hashlib.sha256(password.encode()).digest()
     return base64.urlsafe_b64encode(key)
 
-# Select File
 def browse_file():
     global filename
     filename = filedialog.askopenfilename()
     file_label.config(text=filename)
 
-# Encrypt Function
 def encrypt_gui():
     try:
         password = password_entry.get()
@@ -34,7 +31,6 @@ def encrypt_gui():
     except Exception as e:
         messagebox.showerror("Error", f"Error: {e}")
 
-# Decrypt Function
 def decrypt_gui():
     try:
         password = password_entry.get()
@@ -54,12 +50,10 @@ def decrypt_gui():
     except Exception as e:
         messagebox.showerror("Error", f"Error: {e}")
 
-# GUI Window
 window = tk.Tk()
 window.title("File Encryption/Decryption")
 window.geometry("400x250")
 
-# Widgets
 tk.Button(window, text="Select File", command=browse_file).pack(pady=10)
 file_label = tk.Label(window, text="No file selected")
 file_label.pack()
@@ -72,3 +66,4 @@ tk.Button(window, text="Encrypt", command=encrypt_gui, bg="lightgreen").pack(pad
 tk.Button(window, text="Decrypt", command=decrypt_gui, bg="lightblue").pack()
 
 window.mainloop()
+
